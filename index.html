@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101c1c"><meta name="description" content="一只糖罐，一段从未发生的人生。进入悬浮的记忆老屋，亲手完成一场关于遗忘与陪伴的叙事旅程。">
+  <title>糖罐里的太阳 · 第零次放学</title>
+  <link rel="icon" href="./assets/sun.svg" type="image/svg+xml"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <canvas id="world" aria-label="可交互的三维记忆空间"></canvas>
+  <div class="shade" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+  <div id="fallback" hidden><span class="sun-mark">☼</span><h2>这段记忆需要图形加速</h2><p>请在 Chrome 或 Edge 中开启硬件加速后重新打开。你的阅读进度会被保留。</p><button onclick="location.reload()">重新打开</button></div>
+  <header class="topbar">
+    <button class="brand" id="home" aria-label="返回标题画面"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="7"/><circle cx="20" cy="20" r="15" stroke-dasharray="1 5"/><path d="M20 0v8M20 32v8M0 20h8M32 20h8"/></svg><span>糖罐里的太阳<small>THE SUN IN A SUGAR JAR</small></span></button>
+    <div class="top-right"><span class="edition">一场关于记忆的交互叙事</span><button id="sound" class="icon-btn" aria-label="开启声音" title="开启声音"><svg viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 8c3 2 3 6 0 8M19 5c5 4 5 10 0 14"/></svg><i></i></button><button id="menu" class="icon-btn" aria-label="打开章节与设置" title="章节与设置"><svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button></div>
+  </header>
+  <main id="landing">
+    <div class="hero-copy"><div class="eyebrow"><span></span> MEMORY ARCHIVE &nbsp; / &nbsp; 000</div><p class="overline">有些未来，从未发生。<br>却被一个人，想念了一生。</p><h1>糖罐里的<br><em>太阳</em><span class="title-dot">。</span></h1><div class="subtitle"><span class="hairline"></span> 第 零 次 放 学 <span class="en">THE WAY HOME</span></div><p class="intro">推开一扇不该存在的门。<br>循着三声轻响，回到那个没有结束的下午。</p><div class="start-row"><button id="start" class="primary"><span>进入记忆</span><svg viewBox="0 0 28 16"><path d="M0 8h25M18 1l7 7-7 7"/></svg></button><button id="resume" class="text-btn" hidden>继续上次的旅程 <span>↗</span></button></div><div class="experience-meta"><span>约 15 分钟</span><b>·</b><span>鼠标 / 触屏交互</span><b>·</b><span>建议佩戴耳机</span></div></div>
+    <div class="scene-caption"><span class="caption-line"></span><span>001 / 未曾存在的老屋<small>A HOUSE BUILT FROM LONGING</small></span></div>
+    <div class="hero-coordinates"><span>2046 / ?? / ??</span><span>记忆坐标 &nbsp; 未知</span></div>
+    <footer class="landing-footer"><div><span class="live-dot"></span> REALTIME MEMORY SPACE</div><span>移动鼠标，凝视这段未发生的未来</span><button id="about">关于这段旅程 <span>↗</span></button></footer>
+  </main>
+  <section id="game" hidden aria-label="游戏界面">
+    <div class="chapter-heading"><div class="eyebrow" id="chapter-index"></div><h2 id="chapter-title"></h2><p id="chapter-location"></p></div>
+    <div class="progress"><span id="chapter-count"></span><div id="progress-ticks"></div></div>
+    <div id="hotspots"></div><div id="focus-label"></div>
+    <aside id="objective"><span class="tiny-label">此刻 · NOW</span><p id="objective-text"></p><small id="objective-help"></small><div id="task-progress"></div></aside>
+    <div id="interaction" aria-live="polite"></div>
+    <div id="dialogue" hidden><div class="dialogue-line"></div><div class="dialogue-content"><span id="speaker"></span><p id="dialogue-text"></p></div><button id="dialogue-next" aria-label="继续对话">继续 <span>↗</span></button></div>
+    <div class="game-footer"><button id="hint"><span>?</span> 需要一点提示</button><span id="mode-label">凝视 · 聆听 · 触碰</span><button id="journal">记忆拾遗 <b id="collection-count">0</b></button></div>
+  </section>
+  <div id="transition" aria-hidden="true"><span id="transition-number"></span><h2 id="transition-title"></h2><p id="transition-year"></p></div>
+  <dialog id="drawer"><button class="close" aria-label="关闭">×</button><div id="drawer-content"></div></dialog>
+  <dialog id="inspect"><button class="close" aria-label="关闭">×</button><div id="inspect-content"></div></dialog>
+  <div id="toast" role="status"></div>
+  <section id="ending" hidden><div class="eyebrow">THE MEMORY REMAINS</div><h2>这一次，<br>换我等你。</h2><p>记忆可能消失。<br>但一颗糖，仍然记得回家的路。</p><span class="ending-line"></span><div class="ending-actions"><button id="ending-journal" class="text-btn">翻看留下的记忆 ↗</button><button id="replay" class="text-btn">回到最初的门 ↗</button></div><small>糖罐里的太阳 · 第零次放学<br>献给那些在还能记得时，为后来留下温柔的人。</small></section>
+  <script src="./vendor/three.min.js"></script><script src="./world.js"></script><script src="./audio.js"></script><script src="./story.js"></script><script src="./app.js"></script>
+</body>
+</html>
